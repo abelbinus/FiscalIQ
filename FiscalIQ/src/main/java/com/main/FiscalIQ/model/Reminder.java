@@ -1,13 +1,15 @@
 package com.main.FiscalIQ.model;
 
+import java.util.Map;
+
 public class Reminder extends Notification {
-    public Reminder(String notification) {
+    public Reminder(Map<Long, String> notification) {
         super(notification);
     }
 
     @Override
     public void sendNotification() {
-        System.out.println("Sending reminder: " + notification);
+        System.out.println("Sending reminder: ");
     }
 
     public String getReminder() {

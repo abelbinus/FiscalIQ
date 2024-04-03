@@ -6,13 +6,10 @@ public enum SubscriptionType {
     TIER2;
 
     public int getCost() {
-        switch (this) {
-            case TIER1:
-                return 5;
-            case TIER2:
-                return 10;
-            default:
-                return 0; // Default cost for NOT_ACTIVE
-        }
+        return switch (this) {
+            case TIER1 -> 5;
+            case TIER2 -> 10;
+            default -> 0; // Default cost for NOT_ACTIVE
+        };
     }
 }

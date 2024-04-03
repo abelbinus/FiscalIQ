@@ -1,17 +1,15 @@
 package com.main.FiscalIQ.model;
 
+import java.util.Map;
+
 public class Alert extends Notification {
-    public Alert(String notification) {
+    public Alert(Map<Long, String> notification) {
         super(notification);
     }
 
     @Override
     public void sendNotification() {
-        System.out.println("Sending alert: " + notification);
+        System.out.println("Sending alert: ");
     }
 
-    public String getAlert() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAlert'");
-    }
 }

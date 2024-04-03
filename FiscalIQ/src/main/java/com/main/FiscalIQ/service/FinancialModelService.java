@@ -3,31 +3,41 @@ package com.main.FiscalIQ.service;
 import com.main.FiscalIQ.model.Loan;
 import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
+@Service
 public class FinancialModelService {
     // CRUD operations for recommendations
-    public void createRecommendation(Recommendation recommendation) {
-        // Implement logic to create a new recommendation
+    private final Map<Integer, Recommendation<Loan>> recommendations = new ConcurrentHashMap<>();
+    private final AtomicInteger recommendationIdCounter = new AtomicInteger(1);
+
+    public void createRecommendation(Recommendation<Loan> recommendation) {
+        //Implement logic for recommendation
+        int recommendationId = recommendationIdCounter.getAndIncrement();
+        recommendation.setId(recommendationId);
+        recommendations.put(recommendationId, recommendation);
     }
 
-    public Recommendation getRecommendation(int recommendationId) {
-        // Implement logic to retrieve a recommendation by ID
-        return null; // Placeholder
+    public Recommendation<Loan> getRecommendation(int recommendationId) {
+        return recommendations.get(recommendationId);
     }
 
-    public List<Recommendation> getAllRecommendations() {
-        // Implement logic to retrieve all recommendations
-        return null; // Placeholder
+    public List<Recommendation<Loan>> getAllRecommendations() {
+        return new ArrayList<>(recommendations.values());
     }
 
-    public void updateRecommendation(Recommendation recommendation) {
-        // Implement logic to update a recommendation
+    public void updateRecommendation(Recommendation<Loan> recommendation) {
+        recommendations.put(recommendation.getId(), recommendation);
     }
 
     public void deleteRecommendation(int recommendationId) {
-        // Implement logic to delete a recommendation
+        recommendations.remove(recommendationId);
     }
 
     // CRUD operations for loans
@@ -73,6 +83,28 @@ public class FinancialModelService {
     }
 
     public void deleteSavings(int savingsId) {
+        // Implement logic to delete a savings account
+    }
+
+    public void createInvestment(Savings savings) {
+        // Implement logic to create a new savings account
+    }
+
+    public Savings getInvestment(int savingsId) {
+        // Implement logic to retrieve a savings account by ID
+        return null; // Placeholder
+    }
+
+    public List<Savings> getAllInvestment() {
+        // Implement logic to retrieve all savings accounts
+        return null; // Placeholder
+    }
+
+    public void updateInvestment(Savings savings) {
+        // Implement logic to update a savings account
+    }
+
+    public void deleteInvestment(int savingsId) {
         // Implement logic to delete a savings account
     }
 

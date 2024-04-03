@@ -18,32 +18,32 @@ public class FinancialModelController {
     private final FinancialModelService financialModelService;
 
     @Autowired
-    public FinancialModelController(FinancialModelService financialDataService) {
-        this.financialModelService = financialDataService;
+    public FinancialModelController(FinancialModelService financialModelService) {
+        this.financialModelService = financialModelService;
     }
 
     // Recommendations CRUD operations
 
     @PostMapping("/recommendations")
-    public ResponseEntity<Void> createRecommendation(@RequestBody Recommendation recommendation) {
+    public ResponseEntity<Void> createRecommendation(@RequestBody Recommendation<Loan> recommendation) {
         financialModelService.createRecommendation(recommendation);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("/recommendations/{recommendationId}")
-    public ResponseEntity<Recommendation> getRecommendation(@PathVariable int recommendationId) {
-        Recommendation recommendation = financialModelService.getRecommendation(recommendationId);
+    public ResponseEntity<Recommendation<Loan>> getRecommendation(@PathVariable int recommendationId) {
+        Recommendation<Loan> recommendation = financialModelService.getRecommendation(recommendationId);
         return ResponseEntity.ok(recommendation);
     }
 
     @GetMapping("/recommendations")
-    public ResponseEntity<List<Recommendation>> getAllRecommendations() {
-        List<Recommendation> recommendations = financialModelService.getAllRecommendations();
+    public ResponseEntity<List<Recommendation<Loan>>> getAllRecommendations() {
+        List<Recommendation<Loan>> recommendations = financialModelService.getAllRecommendations();
         return ResponseEntity.ok(recommendations);
     }
 
     @PutMapping("/recommendations/{recommendationId}")
-    public ResponseEntity<Void> updateRecommendation(@PathVariable int recommendationId, @RequestBody Recommendation recommendation) {
+    public ResponseEntity<Void> updateRecommendation(@PathVariable int recommendationId, @RequestBody Recommendation<Loan> recommendation) {
         recommendation.setId(recommendationId);
         financialModelService.updateRecommendation(recommendation);
         return ResponseEntity.ok().build();

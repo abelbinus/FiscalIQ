@@ -7,12 +7,18 @@ import com.main.FiscalIQ.model.Reminder;
 
 public class NotificationManagementService {
     public void displayNotification(Notification notification) {
-        if (notification instanceof Reminder reminder) {
-            System.out.println("Displaying reminder: " + reminder.getReminder());
-        } else if (notification instanceof Alert alert) {
-            System.out.println("Displaying alert: " + alert.getAlert());
-        } else if (notification instanceof Message message) {
-            System.out.println("Displaying message: " + message.getMessage());
+        if (notification instanceof Reminder) {
+            Reminder reminder = (Reminder) notification;
+            System.out.println("Displaying reminder: ");
+            reminder.sendNotification();
+        } else if (notification instanceof Alert) {
+            Alert alert = (Alert) notification;
+            System.out.println("Displaying alert: ");
+            alert.sendNotification();
+        } else if (notification instanceof Message) {
+            Message message = (Message) notification;
+            System.out.println("Displaying message: ");
+            message.sendNotification();
         } else {
             System.out.println("Unknown notification type");
         }
