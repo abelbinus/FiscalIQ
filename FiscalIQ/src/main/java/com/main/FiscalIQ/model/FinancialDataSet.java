@@ -8,6 +8,8 @@ public class FinancialDataSet {
     private Map<String, Double> mortgageRates;
     private Map<String, Double> sharePricesFTSE100;
     private Map<String, Double> investmentFundPerformance;
+    private Map<String, Double> loanPerformance;
+    private Map<String, Double> mortgagePerformance;
 
     // Constructor
     public FinancialDataSet(Map<String, Double> interestRates, Map<String, Double> loanRates,
@@ -58,6 +60,22 @@ public class FinancialDataSet {
     }
 
     public void setInvestmentFundPerformance(Map<String, Double> investmentFundPerformance) {
+        this.investmentFundPerformance = investmentFundPerformance;
+    }
+
+    public Map<String, Double> getloanPerformance() {
+        return investmentFundPerformance;
+    }
+
+    public void setloanPerformance(Map<String, Double> investmentFundPerformance) {
+        this.investmentFundPerformance = investmentFundPerformance;
+    }
+
+    public Map<String, Double> getmortgagePerformance() {
+        return investmentFundPerformance;
+    }
+
+    public void setmortgageFundPerformance(Map<String, Double> investmentFundPerformance) {
         this.investmentFundPerformance = investmentFundPerformance;
     }
 }
