@@ -3,6 +3,7 @@ package com.main.FiscalIQ.model;
 import java.util.Map;
 
 public class FinancialDataSet {
+    private int datasetId;
     private Map<String, Double> interestRates;
     private Map<String, Double> loanRates;
     private Map<String, Double> mortgageRates;

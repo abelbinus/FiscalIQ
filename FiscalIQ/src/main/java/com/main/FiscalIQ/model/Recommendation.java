@@ -6,6 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Recommendation<T> {
+    private int recommendationId
     private T userOption; // User's decision
     private T recommendationOption; // Recommendation
 

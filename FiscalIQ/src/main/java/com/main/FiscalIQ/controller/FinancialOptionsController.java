@@ -2,13 +2,19 @@ package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.model.Investment;
 import com.main.FiscalIQ.model.Loan;
+import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
+import com.main.FiscalIQ.model.Subscription;
+import com.main.FiscalIQ.model.SubscriptionType;
 import com.main.FiscalIQ.service.FinancialOptionsService;
+import com.main.FiscalIQ.service.SubscriptionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -16,10 +22,12 @@ import java.util.Map;
 public class FinancialOptionsController {
 
     private final FinancialOptionsService financialOptionsService;
+    private final SubscriptionService subscriptionService;
 
     @Autowired
-    public FinancialOptionsController(FinancialOptionsService financialOptionsService) {
+    public FinancialOptionsController(FinancialOptionsService financialOptionsService, SubscriptionService subscriptionService) {
         this.financialOptionsService = financialOptionsService;
+        this.subscriptionService = subscriptionService;
     }
 
     @PostMapping("/savings/track-performance")
@@ -58,26 +66,75 @@ public class FinancialOptionsController {
         return ResponseEntity.ok(loanPerformance);
     }
 
-    @PostMapping("/savings/generate-recommendations")
-    public ResponseEntity<Map<String, Double>> generateSavingsRecommendations(@RequestBody Savings userInput) {
-        Map<String, Double> recommendations = financialOptionsService.generateSavingsRecommendations(userInput);
+    // Recommendations CRUD operations
+
+    @PostMapping("/recommendations")
+    public ResponseEntity<Void> createRecommendation(@RequestBody Recommendation<Loan> recommendation) {
+        financialOptionsService.createRecommendation(recommendation);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping("/recommendations/{recommendationId}")
+    public ResponseEntity<Recommendation<Loan>> getRecommendation(@PathVariable int recommendationId) {
+        Recommendation<Loan> recommendation = financialOptionsService.getRecommendation(recommendationId);
+        return ResponseEntity.ok(recommendation);
+    }
+
+    @GetMapping("/recommendations")
+    public ResponseEntity<List<Recommendation<Loan>>> getAllRecommendations() {
+        List<Recommendation<Loan>> recommendations = financialOptionsService.getAllRecommendations();
         return ResponseEntity.ok(recommendations);
     }
 
-    @PostMapping("/investment/generate-recommendations")
-    public ResponseEntity<Object> generateInvestmentRecommendations(@RequestBody Investment userInput) {
-        // Here, Result is returned which can be any object representing the result of the operation.
-        // You may replace Object with the actual result type if it's not Result.
-        Object result = financialOptionsService.generateInvestmentRecommendations(userInput);
-        return ResponseEntity.ok(result);
+    @PutMapping("/recommendations/{recommendationId}")
+    public ResponseEntity<Void> updateRecommendation(@PathVariable int recommendationId, @RequestBody Recommendation<Loan> recommendation) {
+        recommendation.setId(recommendationId);
+        financialOptionsService.updateRecommendation(recommendation);
+        return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/loan/generate-recommendations")
-    public ResponseEntity<Object> generateLoanRecommendations(@RequestBody Loan userInput) {
-        // Here, Result is returned which can be any object representing the result of the operation.
-        // You may replace Object with the actual result type if it's not Result.
-        Object result = financialOptionsService.generateLoanRecommendations(userInput);
-        return ResponseEntity.ok(result);
+    @DeleteMapping("/recommendations/{recommendationId}")
+    public ResponseEntity<Void> deleteRecommendation(@PathVariable int recommendationId) {
+    financialOptionsService.deleteRecommendation(recommendationId);
+           return ResponseEntity.ok().build();
+       }
+
+    // Method to calculate performance for recommendations
+    @PostMapping("/recommendations/{recommendationId}/performance")
+    public ResponseEntity<Void> calculateRecommendationPerformance(@PathVariable int recommendationId) {
+        Recommendation recommendation = financialOptionsService.getRecommendation(recommendationId);
+        if (recommendation != null) {
+            financialOptionsService.calcPerformance(recommendation);
+            financialOptionsService.updateRecommendation(recommendation); // Update recommendation with calculated performance
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/community-forum")
+    public ResponseEntity<Object> accessCommunityForum(@RequestParam int userId) {
+        Subscription subscription = subscriptionService.getSubscriptionByUserId(userId);
+        if (subscription != null && subscription.getTier() == SubscriptionType.TIER2) {
+            // Allow access to the community forum
+            // Implement logic to retrieve forum posts and threads
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User does not have Tier 2 subscription.");
+        }
+    }
+
+    @PostMapping("/expert-advice")
+    public ResponseEntity<Object> getExpertAdvice(@RequestParam int userId) {
+        Subscription subscription = subscriptionService.getSubscriptionByUserId(userId);
+        if (subscription != null && subscription.getTier() == SubscriptionType.TIER2) {
+            // Make external API call to get advice from a human expert
+            // Implement logic to handle the response
+            financialOptionsService.accessCommunityForum(userId);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User does not have Tier 2 subscription.");
+        }
     }
 
     @PostMapping("/compare-performance")

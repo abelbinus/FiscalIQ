@@ -3,6 +3,7 @@ package com.main.FiscalIQ.model;
 import java.util.Map;
 
 public class Loan {
+    private int loanId;
     private int userId;
     private int amount;
     private float term;

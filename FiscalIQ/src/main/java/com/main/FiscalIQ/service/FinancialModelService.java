@@ -1,44 +1,14 @@
 package com.main.FiscalIQ.service;
 
+import com.main.FiscalIQ.model.Investment;
 import com.main.FiscalIQ.model.Loan;
-import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class FinancialModelService {
-    // CRUD operations for recommendations
-    private final Map<Integer, Recommendation<Loan>> recommendations = new ConcurrentHashMap<>();
-    private final AtomicInteger recommendationIdCounter = new AtomicInteger(1);
-
-    public void createRecommendation(Recommendation<Loan> recommendation) {
-        //Implement logic for recommendation
-        int recommendationId = recommendationIdCounter.getAndIncrement();
-        recommendation.setId(recommendationId);
-        recommendations.put(recommendationId, recommendation);
-    }
-
-    public Recommendation<Loan> getRecommendation(int recommendationId) {
-        return recommendations.get(recommendationId);
-    }
-
-    public List<Recommendation<Loan>> getAllRecommendations() {
-        return new ArrayList<>(recommendations.values());
-    }
-
-    public void updateRecommendation(Recommendation<Loan> recommendation) {
-        recommendations.put(recommendation.getId(), recommendation);
-    }
-
-    public void deleteRecommendation(int recommendationId) {
-        recommendations.remove(recommendationId);
-    }
 
     // CRUD operations for loans
     public void createLoan(Loan loan) {
@@ -86,11 +56,11 @@ public class FinancialModelService {
         // Implement logic to delete a savings account
     }
 
-    public void createInvestment(Savings savings) {
+    public void createInvestment(Investment investment) {
         // Implement logic to create a new savings account
     }
 
-    public Savings getInvestment(int savingsId) {
+    public Savings getInvestment(int investmentId) {
         // Implement logic to retrieve a savings account by ID
         return null; // Placeholder
     }
@@ -113,11 +83,11 @@ public class FinancialModelService {
         // Implement logic to calculate performance for savings
     }
 
-    public void calcPerformance(Loan loan) {
+    public void calcPerformance(Investment investment) {
         // Implement logic to calculate performance for loan
     }
 
-    public void calcPerformance(Recommendation recommendation) {
-        // Implement logic to calculate performance for recommendation
+    public void calcPerformance(Loan loan) {
+        // Implement logic to calculate performance for loan
     }
 }

@@ -1,12 +1,16 @@
 package com.main.FiscalIQ.service;
 
-import com.main.FiscalIQ.common.Result;
 import com.main.FiscalIQ.model.Investment;
 import com.main.FiscalIQ.model.Loan;
+import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class FinancialOptionsService {
@@ -46,27 +50,45 @@ public class FinancialOptionsService {
         return null; // Placeholder
     }
 
-    public Map<String, Double> generateSavingsRecommendations(Savings userInput) {
-        // Implement logic to generate savings recommendations based on user input
-        // Your logic here
-        return null; // Placeholder
+    // CRUD operations for recommendations
+    private final Map<Integer, Recommendation<Loan>> recommendations = new ConcurrentHashMap<>();
+    private final AtomicInteger recommendationIdCounter = new AtomicInteger(1);
+
+    public void createRecommendation(Recommendation<Loan> recommendation) {
+        //Implement logic for recommendation
+        int recommendationId = recommendationIdCounter.getAndIncrement();
+        recommendation.setId(recommendationId);
+        recommendations.put(recommendationId, recommendation);
     }
 
-    public Result generateInvestmentRecommendations(Investment userInput) {
-        // Implement logic to generate investment recommendations based on user input
-        // Your logic here
-        return null; // Placeholder
+    public Recommendation<Loan> getRecommendation(int recommendationId) {
+        return recommendations.get(recommendationId);
     }
 
-    public Result generateLoanRecommendations(Loan userInput) {
-        // Implement logic to generate loan recommendations based on user input
-        // Your logic here
-        return null; // Placeholder
+    public List<Recommendation<Loan>> getAllRecommendations() {
+        return new ArrayList<>(recommendations.values());
     }
 
-    public Result comparePerformance(Map<String, Double> comparisonRequest) {
-        // Implement logic to compare performance between user's options and recommendations
-        // Your logic here
-        return null; // Placeholder
+    public void updateRecommendation(Recommendation<Loan> recommendation) {
+        recommendations.put(recommendation.getId(), recommendation);
     }
+
+    public void deleteRecommendation(int recommendationId) {
+        recommendations.remove(recommendationId);
+    }
+
+    public Object comparePerformance(Map<String, Double> comparisonRequest) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'comparePerformance'");
+    }
+
+    public void calcPerformance(Recommendation recommendation) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'calcPerformance'");
+    }
+
+    public void accessCommunityForum(int userId) {
+        // Implement logic to retrieve forum posts and threads
+    }
+
 }

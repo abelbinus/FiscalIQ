@@ -22,39 +22,6 @@ public class FinancialModelController {
         this.financialModelService = financialModelService;
     }
 
-    // Recommendations CRUD operations
-
-    @PostMapping("/recommendations")
-    public ResponseEntity<Void> createRecommendation(@RequestBody Recommendation<Loan> recommendation) {
-        financialModelService.createRecommendation(recommendation);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @GetMapping("/recommendations/{recommendationId}")
-    public ResponseEntity<Recommendation<Loan>> getRecommendation(@PathVariable int recommendationId) {
-        Recommendation<Loan> recommendation = financialModelService.getRecommendation(recommendationId);
-        return ResponseEntity.ok(recommendation);
-    }
-
-    @GetMapping("/recommendations")
-    public ResponseEntity<List<Recommendation<Loan>>> getAllRecommendations() {
-        List<Recommendation<Loan>> recommendations = financialModelService.getAllRecommendations();
-        return ResponseEntity.ok(recommendations);
-    }
-
-    @PutMapping("/recommendations/{recommendationId}")
-    public ResponseEntity<Void> updateRecommendation(@PathVariable int recommendationId, @RequestBody Recommendation<Loan> recommendation) {
-        recommendation.setId(recommendationId);
-        financialModelService.updateRecommendation(recommendation);
-        return ResponseEntity.ok().build();
-    }
-
-    @DeleteMapping("/recommendations/{recommendationId}")
-    public ResponseEntity<Void> deleteRecommendation(@PathVariable int recommendationId) {
-        financialModelService.deleteRecommendation(recommendationId);
-        return ResponseEntity.ok().build();
-    }
-
     // Savings CRUD operations
 
     @PostMapping("/savings")
@@ -141,19 +108,6 @@ public class FinancialModelController {
         if (loan != null) {
             financialModelService.calcPerformance(loan);
             financialModelService.updateLoan(loan); // Update loan with calculated performance
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    // Method to calculate performance for recommendations
-    @PostMapping("/recommendations/{recommendationId}/performance")
-    public ResponseEntity<Void> calculateRecommendationPerformance(@PathVariable int recommendationId) {
-        Recommendation recommendation = financialModelService.getRecommendation(recommendationId);
-        if (recommendation != null) {
-            financialModelService.calcPerformance(recommendation);
-            financialModelService.updateRecommendation(recommendation); // Update recommendation with calculated performance
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

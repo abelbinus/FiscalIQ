@@ -3,7 +3,7 @@ package com.main.FiscalIQ.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.main.FiscalIQ.common.Result;
 import com.main.FiscalIQ.model.FinancialDataSet;
-import com.main.FiscalIQ.service.FinancialDataService;
+import com.main.FiscalIQ.service.FinancialDatasetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class FinancialDataController {
 
-    private final FinancialDataService financialDataService;
+    private final FinancialDatasetService financialDataService;
 
     @Autowired
-    public FinancialDataController(FinancialDataService financialDataService) {
+    public FinancialDataController(FinancialDatasetService financialDataService) {
         this.financialDataService = financialDataService;
     }
 

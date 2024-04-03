@@ -5,6 +5,7 @@ import java.util.Map;
 
 public abstract class Notification {
 
+    protected int notificationId;
     protected int userId;
     protected Map<Long, String> notificationMap;
 

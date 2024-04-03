@@ -6,6 +6,7 @@ public class Subscription {
     private boolean active = false;
     private Timestamp startTime;
     private int userId;
+    private int subscriptionId;
     private SubscriptionType subType;
 
     public Subscription() {

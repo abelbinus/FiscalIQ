@@ -20,14 +20,14 @@ import javax.security.auth.login.LoginException;
  * application, enforcing security at the application level.
  */
 @Component
-public class AuthHandler implements HandlerInterceptor, WebMvcConfigurer {
+public class Authentication implements HandlerInterceptor, WebMvcConfigurer {
 
 
     public static final String HEAD_KEY = "AUTHORIZATION";
 
     // Autowires an instance of MyInterceptor to be used within this configuration.
     @Autowired
-    private AuthHandler authInterceptor;
+    private Authentication authInterceptor;
 
     private Authorization authorization;
 
@@ -89,7 +89,7 @@ public class AuthHandler implements HandlerInterceptor, WebMvcConfigurer {
     /**
      * Callback method to register interceptors for pre- and post-processing of controller method invocations and resource handler requests.
      * <p>
-     * Registers {@link AuthHandler} to intercept requests matching "/api/**" path patterns,
+     * Registers {@link Authentication} to intercept requests matching "/api/**" path patterns,
      * except for requests to "/api/login/signin", which are explicitly excluded from interception.
      * This setup is useful for applying common logic, such as authentication and logging, to a subset of incoming requests.
      * </p>

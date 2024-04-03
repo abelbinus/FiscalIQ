@@ -1,6 +1,7 @@
 package com.main.FiscalIQ.model;
 
 public class MonthlyFinances {
+    private int monthlyFinanceId;
     private int userId;
     private double salary;
     private double selfEmploymentIncome;
@@ -12,7 +13,8 @@ public class MonthlyFinances {
     public MonthlyFinances() {
     }
 
-    public MonthlyFinances(int userId, double salary, double selfEmploymentIncome, double otherIncome, double mortgagePayment, double utilityBills) {
+    public MonthlyFinances(int monthlyFinanceId, int userId, double salary, double selfEmploymentIncome, double otherIncome, double mortgagePayment, double utilityBills) {
+        this.monthlyFinanceId = monthlyFinanceId;
         this.userId = userId;
         this.salary = salary;
         this.selfEmploymentIncome = selfEmploymentIncome;
@@ -30,6 +32,13 @@ public class MonthlyFinances {
         this.userId = userId;
     }
 
+    public double getMonthlyFinanceId() {
+        return userId;
+    }
+
+    public double setMonthlyFinanceId() {
+        return userId;
+    }
     public double getSalary() {
         return salary;
     }

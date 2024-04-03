@@ -3,6 +3,7 @@ package com.main.FiscalIQ.model;
 import java.util.Map;
 
 public class Investment {
+    private int investmentId;
     private int userId;
     private int issuingPrice;
     private String companyName;

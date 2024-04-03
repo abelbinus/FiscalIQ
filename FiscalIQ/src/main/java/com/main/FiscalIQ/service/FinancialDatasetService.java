@@ -4,7 +4,7 @@ import com.main.FiscalIQ.model.FinancialDataSet;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FinancialDataService {
+public class FinancialDatasetService {
 
     // Method to update financial data from external repositories
     public void updateFinancialData(FinancialDataSet updatedData) {

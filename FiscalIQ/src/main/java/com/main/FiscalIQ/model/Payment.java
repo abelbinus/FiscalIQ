@@ -3,6 +3,7 @@ package com.main.FiscalIQ.model;
 import java.sql.Timestamp;
 
 public class Payment {
+    private int paymentId;
     private int amount;
     private int userId;
     private Timestamp paymentTime;

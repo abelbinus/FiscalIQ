@@ -3,6 +3,7 @@ package com.main.FiscalIQ.model;
 import java.util.Map;
 
 public class Savings {
+    private int savingsId;
     private int userId;
     private int balance;
     private float term;

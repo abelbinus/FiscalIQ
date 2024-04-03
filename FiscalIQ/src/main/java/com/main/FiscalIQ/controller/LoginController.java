@@ -1,7 +1,7 @@
 package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.common.Result;
-import com.main.FiscalIQ.config.AuthHandler;
+import com.main.FiscalIQ.config.Authentication;
 import com.main.FiscalIQ.service.UserManagementService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +24,7 @@ public class LoginController {
     @Autowired
     UserManagementService userManagementService;
 
-    private AuthHandler authHandler;
+    private Authentication authHandler;
 
     /**
      * Endpoint for user login.

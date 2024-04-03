@@ -1,7 +1,7 @@
 package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.common.Result;
-import com.main.FiscalIQ.config.AuthHandler;
+import com.main.FiscalIQ.config.Authentication;
 import com.main.FiscalIQ.model.UserDetail;
 import com.main.FiscalIQ.service.UserManagementService;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserManagementService userManagementService;
 
-    private AuthHandler authHandler;
+    private Authentication authHandler;
 
     /**
      * This API is for adding new user. Only admin role can access this API.
