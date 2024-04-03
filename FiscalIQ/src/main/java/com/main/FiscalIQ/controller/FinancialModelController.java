@@ -12,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/financial-options")
-public class FinancialOptionsController {
+public class FinancialModelController {
 
     private final FinancialModelService financialModelService;
 
     @Autowired
-    public FinancialOptionsController(FinancialModelService financialDataService) {
+    public FinancialModelController(FinancialModelService financialDataService) {
         this.financialModelService = financialDataService;
     }
 

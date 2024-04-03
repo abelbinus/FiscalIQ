@@ -6,7 +6,7 @@ import com.main.FiscalIQ.model.Loan;
 import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
 
-public class FinancialModel {
+public class FinancialModelService {
     // CRUD operations for recommendations
     public void createRecommendation(Recommendation recommendation) {
         // Implement logic to create a new recommendation
