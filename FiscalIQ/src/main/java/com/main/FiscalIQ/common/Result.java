@@ -11,20 +11,6 @@ public class Result {
 
     private String msg;
 
-    public static Result initInstance(){
-        Result result = new Result();
-        return result;
-    }
-
-    public void success(Object obj,String msg){
-    }
-
-    public void success(String msg){
-    }
-
-    public void fail(String msg){
-    }
-
     public Result() {
     }
 
@@ -32,6 +18,20 @@ public class Result {
     }
 
     public Result(boolean suc, String msg) {
+    }
+
+    public static Result initInstance() {
+        Result result = new Result();
+        return result;
+    }
+
+    public void success(Object obj, String msg) {
+    }
+
+    public void success(String msg) {
+    }
+
+    public void fail(String msg) {
     }
 
     public boolean isSuc() {

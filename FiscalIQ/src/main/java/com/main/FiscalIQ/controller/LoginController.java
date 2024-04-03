@@ -3,19 +3,12 @@ package com.main.FiscalIQ.controller;
 import com.main.FiscalIQ.common.Result;
 import com.main.FiscalIQ.config.AuthHandler;
 import com.main.FiscalIQ.service.UserManagementService;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -30,7 +23,7 @@ public class LoginController {
 
     @Autowired
     UserManagementService userManagementService;
-    
+
     private AuthHandler authHandler;
 
     /**
@@ -50,7 +43,6 @@ public class LoginController {
         authHandler.authenticate(userName, password);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
-
 
 
     /**

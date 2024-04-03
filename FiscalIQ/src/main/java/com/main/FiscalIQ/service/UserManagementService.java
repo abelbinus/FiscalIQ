@@ -50,7 +50,7 @@ public class UserManagementService {
      * @return List of user detail.
      */
     public List<UserDetail> getAllUsers() {
-        List<UserDetail> userDetails = Arrays.asList();
+        List<UserDetail> userDetails = List.of();
         return userDetails;
     }
 
@@ -78,7 +78,7 @@ public class UserManagementService {
     /**
      * Get user detail.
      *
-     * @param userId  userId.
+     * @param userId userId.
      * @return Result Object containing the information of this operation whether it fails or success.
      */
     public Result getUserById(Integer userId) {
@@ -90,7 +90,7 @@ public class UserManagementService {
      *
      * @param oldPass Previous password.
      * @param newPass New password.
-     * @param userId UserId.
+     * @param userId  UserId.
      * @return Result Object containing the information of this operation whether it fails or success.
      */
     public Result changePassword(String oldPass, String newPass, Integer userId) {

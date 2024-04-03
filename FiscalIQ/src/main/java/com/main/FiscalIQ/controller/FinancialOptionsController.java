@@ -1,5 +1,5 @@
 package com.main.FiscalIQ.controller;
-    
+
 import com.main.FiscalIQ.model.Investment;
 import com.main.FiscalIQ.model.Loan;
 import com.main.FiscalIQ.model.Savings;

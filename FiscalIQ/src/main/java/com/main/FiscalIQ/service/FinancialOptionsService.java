@@ -1,13 +1,12 @@
 package com.main.FiscalIQ.service;
 
-import java.util.Map;
-
-import org.springframework.stereotype.Service;
-
 import com.main.FiscalIQ.common.Result;
 import com.main.FiscalIQ.model.Investment;
 import com.main.FiscalIQ.model.Loan;
 import com.main.FiscalIQ.model.Savings;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 public class FinancialOptionsService {

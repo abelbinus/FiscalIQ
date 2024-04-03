@@ -1,8 +1,9 @@
 package com.main.FiscalIQ.controller;
 
-import com.main.FiscalIQ.model.*;
+import com.main.FiscalIQ.model.Loan;
+import com.main.FiscalIQ.model.Recommendation;
+import com.main.FiscalIQ.model.Savings;
 import com.main.FiscalIQ.service.FinancialModelService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

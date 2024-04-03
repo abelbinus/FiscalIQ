@@ -9,6 +9,7 @@ public class Investment {
     private int stockCode;
     private String stockName;
     private Map<String, Double> investmentPerformance;
+
     public Map<String, Double> getInvestmentPerformance() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getInvestmentPerformance'");

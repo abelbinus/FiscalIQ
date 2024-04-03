@@ -1,10 +1,10 @@
 package com.main.FiscalIQ.service;
 
-import java.util.List;
-
 import com.main.FiscalIQ.model.Loan;
 import com.main.FiscalIQ.model.Recommendation;
 import com.main.FiscalIQ.model.Savings;
+
+import java.util.List;
 
 public class FinancialModelService {
     // CRUD operations for recommendations

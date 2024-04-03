@@ -1,18 +1,12 @@
 package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.common.Result;
-import com.main.FiscalIQ.model.Payment;
 import com.main.FiscalIQ.service.PaymentService;
-
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -32,13 +26,13 @@ public class PaymentController {
         String requestBody = "{\"userId\":" + userId + ",\"amount\":" + amount + "}";
         // Build request entity
         HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-        
+
         // Create a RestTemplate instance
         RestTemplate restTemplate = new RestTemplate();
-        
+
         // Make the HTTP POST request and get the response entity
         ResponseEntity<String> responseEntity = restTemplate.exchange(apiUrl, HttpMethod.POST, requestEntity, String.class);
-        
+
         // Check if the call was successful
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             // Extract response body

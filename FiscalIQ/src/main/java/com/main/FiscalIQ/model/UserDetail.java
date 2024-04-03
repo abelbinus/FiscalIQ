@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserDetail {
 
-    private Integer id;
+    private Integer userId;
 
     private String firstName;
 

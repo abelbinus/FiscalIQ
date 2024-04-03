@@ -28,7 +28,7 @@ public class UserController {
      * This API is for adding new user. Only admin role can access this API.
      *
      * @param userDetail UserDetail class includes id, name, email, department, type, and password. All fields must not be null.
-     * @param token Authorization token from header.
+     * @param token      Authorization token from header.
      * @return ResponseEntity with status Created and body indicating the result of this transaction.
      */
     @PostMapping("/registration")
@@ -46,7 +46,7 @@ public class UserController {
      * This API is for deleting user. Only admin role can access this API.
      *
      * @param userId userId to be deleted.
-     * @param token Authorization token from header.
+     * @param token  Authorization token from header.
      * @return ResponseEntity with status ok and body indicating the result of this transaction.
      */
     @DeleteMapping("/user/{userId}")
@@ -108,10 +108,10 @@ public class UserController {
 
     /**
      * Updates password for user
-     * 
+     *
      * @param oldPass Old password of the user
      * @param newPass New password of the user
-     * @param userId The user ID of the user
+     * @param userId  The user ID of the user
      * @return ResponseEntity<Result> ResponseEntity containing a Result object with the success or failure message.
      */
     @PutMapping("/user/changePassword/{oldPass}/{newPass}/{userId}")

@@ -1,7 +1,5 @@
 package com.main.FiscalIQ.model;
 
-import java.util.Map;
-
 public class Recommendation {
     private int userId;
 
@@ -10,5 +8,5 @@ public class Recommendation {
         throw new UnsupportedOperationException("Unimplemented method 'setId'");
     }
 
-    
+
 }
