@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class FinanceManagementService {
 
     @Autowired
-    private FinanceDetail financeRepository;
+    private FinanceDetail financeDetail;
     @Autowired
-    private UserDetail userRepository;
+    private UserDetail userDetail;
 
 }

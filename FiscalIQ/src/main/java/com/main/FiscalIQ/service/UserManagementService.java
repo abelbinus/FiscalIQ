@@ -1,7 +1,7 @@
 package com.main.FiscalIQ.service;
 
 import com.main.FiscalIQ.common.Result;
-import com.main.FiscalIQ.model.FinanceDetail;
+import com.main.FiscalIQ.model.MonthlyFinances;
 import com.main.FiscalIQ.model.UserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class UserManagementService {
     @Autowired
     private UserDetail userRepository;
     @Autowired
-    private FinanceDetail financeRepository;
+    private MonthlyFinances financeRepository;
 
     /**
      * This method is to handle add new user logic.
