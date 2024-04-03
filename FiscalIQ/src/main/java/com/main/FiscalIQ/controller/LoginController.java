@@ -1,7 +1,7 @@
 package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.common.Result;
-import com.main.FiscalIQ.model.UserPassword;
+import com.main.FiscalIQ.config.AuthHandler;
 import com.main.FiscalIQ.service.UserManagementService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +30,8 @@ public class LoginController {
 
     @Autowired
     UserManagementService userManagementService;
+    
+    private AuthHandler authHandler;
 
     /**
      * Endpoint for user login.
@@ -41,8 +43,11 @@ public class LoginController {
      */
     @CrossOrigin(origins = "*")
     @PostMapping("/login")
-    public ResponseEntity<Result> userLogin(HttpRequest request, @SuppressWarnings("rawtypes") HttpResponse response, @RequestBody UserPassword userPassword) throws Exception {
+    public ResponseEntity<Result> userLogin(HttpRequest request, @SuppressWarnings("rawtypes") HttpResponse response, @RequestBody String userPassword) {
         Result result = Result.initInstance();
+        String userName = "";
+        String password = "";
+        authHandler.authenticate(userName, password);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 

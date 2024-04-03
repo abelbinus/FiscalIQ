@@ -1,6 +1,7 @@
 package com.main.FiscalIQ.controller;
 
 import com.main.FiscalIQ.common.Result;
+import com.main.FiscalIQ.config.AuthHandler;
 import com.main.FiscalIQ.model.UserDetail;
 import com.main.FiscalIQ.service.UserManagementService;
 import jakarta.validation.Valid;
@@ -21,6 +22,8 @@ public class UserController {
     @Autowired
     private UserManagementService userManagementService;
 
+    private AuthHandler authHandler;
+
     /**
      * This API is for adding new user. Only admin role can access this API.
      *
@@ -28,11 +31,12 @@ public class UserController {
      * @param token Authorization token from header.
      * @return ResponseEntity with status Created and body indicating the result of this transaction.
      */
-    @PostMapping("/user")
+    @PostMapping("/registration")
     public ResponseEntity<Result> addUser(@Valid @RequestBody UserDetail userDetail) {
-
+        String userName = "";
+        String password = "";
         userManagementService.addUser(userDetail);
-
+        authHandler.authenticate(userName, password);
         Result result = new Result(true, "", "User added successfully");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
@@ -109,11 +113,9 @@ public class UserController {
      * @param newPass New password of the user
      * @param userId The user ID of the user
      * @return ResponseEntity<Result> ResponseEntity containing a Result object with the success or failure message.
-     * @throws NonExistentIdException when user id not exist.
-     * @throws DatabaseException when database operation fails.
      */
     @PutMapping("/user/changePassword/{oldPass}/{newPass}/{userId}")
-    public ResponseEntity<Result> searchProjectByTitle(@PathVariable String oldPass, @PathVariable String newPass, @PathVariable Integer userId) {
+    public ResponseEntity<Result> changePassword(@PathVariable String oldPass, @PathVariable String newPass, @PathVariable Integer userId) {
         // Update password for user
         Result result = userManagementService.changePassword(oldPass, newPass, userId);
         // Return the result in a ResponseEntity with HTTP status OK

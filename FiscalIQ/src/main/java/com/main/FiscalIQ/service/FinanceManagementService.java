@@ -1,7 +1,7 @@
 package com.main.FiscalIQ.service;
 
-import com.main.FiscalIQ.repository.FinanceRepository;
-import com.main.FiscalIQ.repository.UserRepository;
+import com.main.FiscalIQ.model.FinanceDetail;
+import com.main.FiscalIQ.model.UserDetail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class FinanceManagementService {
 
     @Autowired
-    private FinanceRepository financeRepository;
+    private FinanceDetail financeRepository;
     @Autowired
-    private UserRepository userRepository;
+    private UserDetail userRepository;
 
 }
