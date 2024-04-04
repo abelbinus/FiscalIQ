@@ -6,7 +6,6 @@ public class Subscription {
     private boolean active = false;
     private Timestamp startTime;
     private int userId;
-    private int subscriptionId;
     private SubscriptionType subType;
 
     public Subscription() {
@@ -45,5 +44,15 @@ public class Subscription {
 
     public void setSubType(SubscriptionType subType) {
         this.subType = subType;
+    }
+
+    public static Subscription getSubscriptionByUserId(int userId2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSubscriptionByUserId'");
+    }
+
+    public Object getTier() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTier'");
     }
 }
