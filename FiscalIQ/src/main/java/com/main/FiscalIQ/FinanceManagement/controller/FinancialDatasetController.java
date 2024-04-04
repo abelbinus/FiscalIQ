@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class FinancialDataController {
+public class FinancialDatasetController {
 
     private final FinancialDatasetService financialDataService;
 
     @Autowired
-    public FinancialDataController(FinancialDatasetService financialDataService) {
+    public FinancialDatasetController(FinancialDatasetService financialDataService) {
         this.financialDataService = financialDataService;
     }
 
