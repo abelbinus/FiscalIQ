@@ -140,7 +140,6 @@ public class FinancialOptionsController {
     @PostMapping("/compare-performance")
     public ResponseEntity<Object> comparePerformance(@RequestBody Map<String, Double> comparisonRequest) {
         // Here, Result is returned which can be any object representing the result of the operation.
-        // You may replace Object with the actual result type if it's not Result.
         Object result = financialOptionsService.comparePerformance(comparisonRequest);
         return ResponseEntity.ok(result);
     }

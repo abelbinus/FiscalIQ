@@ -13,8 +13,6 @@ public class FinancialDatasetService {
 
     // Method to get financial data
     public FinancialDataSet getFinancialData() {
-        // Add logic to retrieve financial data
-        // For now, returning dummy data
         return new FinancialDataSet(null, null, null, null, null);
     }
 }

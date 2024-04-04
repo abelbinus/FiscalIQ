@@ -43,8 +43,6 @@ public class SubscriptionController {
 
         // Check if the payment was successful
         if (paymentResponse.getStatusCode() == HttpStatus.OK) {
-            // Subscription logic goes here
-            // For now, let's just return a success response
             SubscriptionService subscriptionService = new SubscriptionService();
             subscriptionService.addSubscription(userId, SubscriptionType.valueOf(subType.toUpperCase()));
             BillingInvoiceService billingInvoiceManagement = new BillingInvoiceService();
@@ -79,8 +77,6 @@ public class SubscriptionController {
 
         // Check if the payment was successful
         if (paymentResponse.getStatusCode() == HttpStatus.OK) {
-            // Subscription logic goes here
-            // For now, let's just return a success response
             SubscriptionService subscriptionService = new SubscriptionService();
             subscriptionService.updateSubscription(userId, SubscriptionType.valueOf(subType.toUpperCase()));
             BillingInvoiceService billingInvoiceManagement = new BillingInvoiceService();
@@ -131,7 +127,6 @@ public class SubscriptionController {
                 cost = SubscriptionType.TIER2.getCost();
                 break;
             default:
-                // Handle invalid subscription type
                 break;
         }
 

@@ -17,37 +17,31 @@ public class FinancialOptionsService {
     public void trackSavingsPerformance(Savings savings) {
         // Implement logic to track savings performance
         Map<String, Double> savingsPerformance = savings.getSavingsPerformance();
-        // Your logic here
     }
 
     public void trackInvestmentPerformance(Investment investment) {
         // Implement logic to track investment performance
         Map<String, Double> investmentPerformance = investment.getInvestmentPerformance();
-        // Your logic here
     }
 
     public void trackLoanPerformance(Loan loan) {
         // Implement logic to track loan performance
         Map<String, Double> loanPerformance = loan.getLoanPerformance();
-        // Your logic here
     }
 
     public Map<String, Double> viewSavingsPerformance(int userId) {
         // Implement logic to retrieve and return savings performance data for a user
-        // Your logic here
-        return null; // Placeholder
+        return null;
     }
 
     public Map<String, Double> viewInvestmentPerformance(int userId) {
         // Implement logic to retrieve and return investment performance data for a user
-        // Your logic here
-        return null; // Placeholder
+        return null;
     }
 
     public Map<String, Double> viewLoanPerformance(int userId) {
         // Implement logic to retrieve and return loan performance data for a user
-        // Your logic here
-        return null; // Placeholder
+        return null;
     }
 
     // CRUD operations for recommendations

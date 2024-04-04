@@ -17,12 +17,12 @@ public class FinancialModelService {
 
     public Loan getLoan(int loanId) {
         // Implement logic to retrieve a loan by ID
-        return null; // Placeholder
+        return null;
     }
 
     public List<Loan> getAllLoans() {
         // Implement logic to retrieve all loans
-        return null; // Placeholder
+        return null;
     }
 
     public void updateLoan(Loan loan) {
@@ -40,12 +40,12 @@ public class FinancialModelService {
 
     public Savings getSavings(int savingsId) {
         // Implement logic to retrieve a savings account by ID
-        return null; // Placeholder
+        return null;
     }
 
     public List<Savings> getAllSavings() {
         // Implement logic to retrieve all savings accounts
-        return null; // Placeholder
+        return null;
     }
 
     public void updateSavings(Savings savings) {
@@ -62,12 +62,12 @@ public class FinancialModelService {
 
     public Savings getInvestment(int investmentId) {
         // Implement logic to retrieve a savings account by ID
-        return null; // Placeholder
+        return null;
     }
 
     public List<Savings> getAllInvestment() {
         // Implement logic to retrieve all savings accounts
-        return null; // Placeholder
+        return null;
     }
 
     public void updateInvestment(Savings savings) {
