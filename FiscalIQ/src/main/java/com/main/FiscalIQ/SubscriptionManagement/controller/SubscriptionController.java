@@ -2,7 +2,7 @@ package com.main.FiscalIQ.SubscriptionManagement.controller;
 
 import com.main.FiscalIQ.common.Result;
 import com.main.FiscalIQ.SubscriptionManagement.model.SubscriptionType;
-import com.main.FiscalIQ.SubscriptionManagement.service.BillingInvoiceManagement;
+import com.main.FiscalIQ.SubscriptionManagement.service.BillingInvoiceService;
 import com.main.FiscalIQ.SubscriptionManagement.service.SubscriptionService;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -47,7 +47,7 @@ public class SubscriptionController {
             // For now, let's just return a success response
             SubscriptionService subscriptionService = new SubscriptionService();
             subscriptionService.addSubscription(userId, SubscriptionType.valueOf(subType.toUpperCase()));
-            BillingInvoiceManagement billingInvoiceManagement = new BillingInvoiceManagement();
+            BillingInvoiceService billingInvoiceManagement = new BillingInvoiceService();
             billingInvoiceManagement.generateInvoice(userId);
             result.setMessage("Subscription successful!");
             return ResponseEntity.ok(result);
@@ -83,7 +83,7 @@ public class SubscriptionController {
             // For now, let's just return a success response
             SubscriptionService subscriptionService = new SubscriptionService();
             subscriptionService.updateSubscription(userId, SubscriptionType.valueOf(subType.toUpperCase()));
-            BillingInvoiceManagement billingInvoiceManagement = new BillingInvoiceManagement();
+            BillingInvoiceService billingInvoiceManagement = new BillingInvoiceService();
             billingInvoiceManagement.generateInvoice(userId);
             // Return success response
             result.setMessage("Subscription updated successfully!");

@@ -1,6 +1,6 @@
 package com.main.FiscalIQ.SubscriptionManagement.service;
 
-public class BillingInvoiceManagement {
+public class BillingInvoiceService {
 
     private PaymentService paymentService;
 
